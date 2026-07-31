@@ -1,6 +1,14 @@
 import streamlit as st
 import os
 import json
+from dotenv import load_dotenv
+
+# --- 1. AYARLAR & GÜVENLİK ---
+# .env dosyasındaki API key'i sisteme yükler
+load_dotenv()
+
+if "GOOGLE_API_KEY" not in os.environ or not os.environ["GOOGLE_API_KEY"]:
+    os.environ["GOOGLE_API_KEY"] = st.secrets.get("GOOGLE_API_KEY", "")
 
 # --- GEREKLİ KÜTÜPHANELER ---
 from langchain_community.embeddings import HuggingFaceEmbeddings
@@ -11,8 +19,6 @@ from langchain.chains.combine_documents import create_stuff_documents_chain
 from langchain_core.prompts import ChatPromptTemplate
 
 # --- 1. AYARLAR ---
-os.environ["GOOGLE_API_KEY"] = "AIzaSyB2roFaF5ys-DQT0LgaQZai4DgXexPe4ok"
-
 st.set_page_config(page_title="METU-IE Bot", page_icon="🤖")
 st.title("METU-IE Staj Danışmanı")
 
