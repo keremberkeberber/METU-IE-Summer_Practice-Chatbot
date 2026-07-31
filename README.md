@@ -28,5 +28,16 @@ The system utilizes **Retrieval-Augmented Generation (RAG)**, structured **Syste
 2. Install dependencies & set up API key:
    pip install -r requirements.txt
 
-3. Run the chatbot:
-   python app.py
+3. Set up API Key:
+   Create a .env file in the root directory based on .env.example and add your Google Gemini API Key:
+   GOOGLE_API_KEY=your_actual_gemini_api_key
+   (You can obtain a free API key from Google AI Studio: https://aistudio.google.com/)
+
+4. Build the Vector Database (First Time Only):
+   Run the database pipeline script to build ChromaDB embeddings:
+   python chaining2.py
+
+5. Run the Chatbot:
+   Launch the web interface using Streamlit:
+   streamlit run app.py
+
